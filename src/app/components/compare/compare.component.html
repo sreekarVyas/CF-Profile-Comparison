@@ -1,0 +1,26 @@
+
+@if (readyToCompare) {
+    <p>User One Handle : {{ userOne.handle }}</p>
+    <p>User Two Handle : {{ userTwo.handle }}</p>
+    <p>User One Rating : {{ userOne.rating }}</p>
+    <p>User Two Rating : {{ userTwo.rating }}</p>
+    
+    <table>
+        <tr>
+            <th>Problem Rating</th>
+            <th>Solved Count of User</th>
+        </tr>
+        @for (item of getKeys(userOneProblemRatingFrequency); track $index) {
+            <tr>
+                <td>{{item}}</td>
+                <td>{{userOneProblemRatingFrequency[item]}}</td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+
+
+
