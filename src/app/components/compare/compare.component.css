@@ -1,0 +1,39 @@
+/* Basic table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  font-family: 'Arial', sans-serif;
+  text-align: left;
+}
+
+/* Table header styling */
+th {
+  background-color: #009879;
+  color: white;
+  padding: 12px 15px;
+  border-bottom: 2px solid #006e53;
+}
+
+/* Table body styling */
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #dddddd;
+}
+
+/* Zebra striping effect */
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+/* Hover effect */
+tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Optional: Add some space between table and surrounding content */
+table {
+  margin-top: 20px;
+}

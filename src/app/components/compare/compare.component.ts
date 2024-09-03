@@ -4,8 +4,6 @@ import { DataService } from '../../services/data.service';
 import { Submission } from '../../../../Submission';
 type ProblemIdentifier = [number, string]
 
-
-
 const calculateProblemFrequency = (submissions: Submission[]): { [difficulty: string]: number } => {
   const problemRatingFrequency: { [difficulty: string]: number } = {};
   const seenProblemIds: Map<ProblemIdentifier, boolean> = new Map();
@@ -31,10 +29,8 @@ const calculateProblemFrequency = (submissions: Submission[]): { [difficulty: st
       else {
         problemRatingFrequency[rating] = 1
       }
-    }
-    
+    } 
   }
-
   return problemRatingFrequency;
 }
 
@@ -55,6 +51,8 @@ export class CompareComponent implements OnInit {
   userOneSubmissions: Submission[] = [];
   userTwoSubmissions: Submission[] = [];
 
+  difficulties: number[] = []
+
   userOneProblemRatingFrequency = {}
   userTwoProblemRatingFrequency = {}
 
@@ -62,6 +60,11 @@ export class CompareComponent implements OnInit {
 
   constructor(private dataService: DataService) {}
   ngOnInit() {
+    let current = 800;
+    while(current <= 3500) {
+      this.difficulties.push(current);
+      current += 100;
+    }
     this.dataService.userOne$.subscribe(
       {
         next: (data) => {

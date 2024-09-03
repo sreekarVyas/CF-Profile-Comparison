@@ -1,26 +1,23 @@
-
 @if (readyToCompare) {
-    <p>User One Handle : {{ userOne.handle }}</p>
-    <p>User Two Handle : {{ userTwo.handle }}</p>
-    <p>User One Rating : {{ userOne.rating }}</p>
-    <p>User Two Rating : {{ userTwo.rating }}</p>
-    
-    <table>
-        <tr>
-            <th>Problem Rating</th>
-            <th>Solved Count of User</th>
-        </tr>
-        @for (item of getKeys(userOneProblemRatingFrequency); track $index) {
-            <tr>
-                <td>{{item}}</td>
-                <td>{{userOneProblemRatingFrequency[item]}}</td>
-            </tr>
-        }
-    </table>
+<p>{{ userOne.handle }}'s Current Rating : {{ userOne.rating }}</p>
+<p>{{ userTwo.handle }}'s Current Rating : {{ userTwo.rating }}</p>
+
+<table>
+  <tr>
+    <th>Problem Rating</th>
+    <th>Solved Count of {{ userOne.handle }} ({{userOne.rating}})</th>
+    <th>Solved Count of {{ userTwo.handle }} ({{userTwo.rating}})</th>
+  </tr>
+  @for (item of difficulties; track $index) {
+  @if(userOneProblemRatingFrequency[item] &&
+  userTwoProblemRatingFrequency[item]) {
+  @if((userOneProblemRatingFrequency[item] != 0) ||
+  (userTwoProblemRatingFrequency[item] != 0)) {
+  <tr>
+    <td>{{ item }}</td>
+    <td>{{ userOneProblemRatingFrequency[item] }}</td>
+    <td>{{ userTwoProblemRatingFrequency[item] }}</td>
+  </tr>
+  } } }
+</table>
 }
-
-
-
-
-
-
