@@ -5,8 +5,8 @@
 <table>
   <tr>
     <th>Problem Rating</th>
-    <th>Solved Count of {{ userOne.handle }} ({{userOne.rating}})</th>
-    <th>Solved Count of {{ userTwo.handle }} ({{userTwo.rating}})</th>
+    <th>Solved Count of {{ userOne.handle }} ({{ userOne.rating }})</th>
+    <th>Solved Count of {{ userTwo.handle }} ({{ userTwo.rating }})</th>
   </tr>
   @for (item of difficulties; track $index) {
   @if(userOneProblemRatingFrequency[item] &&
