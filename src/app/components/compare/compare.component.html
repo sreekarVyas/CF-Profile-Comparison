@@ -54,4 +54,36 @@
   </tr>
   } } }
 </table>
+
+<h2>Comparision by Number of Solves per Tag</h2>
+<table>
+  <tr>
+    <th>Problem Tag</th>
+    <th>Solved Count of {{ userOne.handle }} ({{ userOne.rating }})</th>
+    <th>Solved Count of {{ userTwo.handle }} ({{ userTwo.rating }})</th>
+  </tr>
+  @for (item of mergedTags; track $index) {
+  @if(userOneProblemTagFrequency[item] ||
+  userTwoProblemTagFrequency[item]) {
+  @if((userOneProblemTagFrequency[item] != 0) ||
+  (userTwoProblemTagFrequency[item] != 0)) {
+  <tr>
+    <td>{{ item }}</td>
+    <td>
+      {{
+        userOneProblemTagFrequency[item]
+          ? userOneProblemTagFrequency[item]
+          : 0
+      }}
+    </td>
+    <td>
+      {{
+        userTwoProblemTagFrequency[item]
+          ? userTwoProblemTagFrequency[item]
+          : 0
+      }}
+    </td>
+  </tr>
+  } } }
+</table>
 }

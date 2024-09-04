@@ -64,7 +64,7 @@ export class DataService {
     })
   }
 
-  emitData() {
+  emitData() {  
     if (this.userOneSubmissions.length >= 1 && this.userTwoSubmissions.length >= 1) {
       console.log('Data is being emitted by the subject');
       this.userOneSubject.next(this.userOne);
