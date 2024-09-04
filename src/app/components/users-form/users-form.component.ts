@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../../../User';
+import { User } from '../../../../Data Skeleton/User';
 import { DataService } from '../../services/data.service';
 
 interface ratingFetchReturn {

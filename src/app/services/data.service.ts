@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable, OnInit } from '@angular/core';
-import { User } from '../../../User';
+import { User } from '../../../Data Skeleton/User';
 import { Subject } from 'rxjs';
-import { Submission } from '../../../Submission';
+import { Submission } from '../../../Data Skeleton/Submission';
 import { HttpClient } from '@angular/common/http';
 
 interface submissionsFetchReturn {

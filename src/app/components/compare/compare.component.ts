@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../../User'
+import { User } from '../../../../Data Skeleton/User'
 import { DataService } from '../../services/data.service';
-import { Submission } from '../../../../Submission';
+import { Submission } from '../../../../Data Skeleton/Submission';
 type ProblemIdentifier = [number, string]
 
 const calculateProblemFrequency = (submissions: Submission[]): { [difficulty: string]: number } => {
