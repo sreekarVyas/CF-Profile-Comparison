@@ -1,7 +1,29 @@
 @if (readyToCompare) {
-<p>{{ userOne.handle }}'s Current Rating : {{ userOne.rating }}</p>
-<p>{{ userTwo.handle }}'s Current Rating : {{ userTwo.rating }}</p>
+<h2>General Stats</h2>
+<table>
+  <tr>
+    <th>Category</th>
+    <th>{{ userOne.handle }}</th>
+    <th>{{ userTwo.handle }}</th>
+  </tr>
+  <tr>
+    <td>Current Rating</td>
+    <td>{{ userOne.rating }}</td>
+    <td>{{ userTwo.rating }}</td>
+  </tr>
+  <tr>
+    <td>Maximum Rating</td>
+    <td>{{ userOne.maxRating }}</td>
+    <td>{{ userTwo.maxRating }}</td>
+  </tr>
+  <tr>
+    <td>Number of Contests Participated</td>
+    <td>{{ userOneRatedContests }}</td>
+    <td>{{ userTwoRatedContests }}</td>
+  </tr>
+</table>
 
+<h2>Comparision by Number of Solves per Rating</h2>
 <table>
   <tr>
     <th>Problem Rating</th>
@@ -9,14 +31,26 @@
     <th>Solved Count of {{ userTwo.handle }} ({{ userTwo.rating }})</th>
   </tr>
   @for (item of difficulties; track $index) {
-  @if(userOneProblemRatingFrequency[item] &&
+  @if(userOneProblemRatingFrequency[item] ||
   userTwoProblemRatingFrequency[item]) {
   @if((userOneProblemRatingFrequency[item] != 0) ||
   (userTwoProblemRatingFrequency[item] != 0)) {
   <tr>
     <td>{{ item }}</td>
-    <td>{{ userOneProblemRatingFrequency[item] }}</td>
-    <td>{{ userTwoProblemRatingFrequency[item] }}</td>
+    <td>
+      {{
+        userOneProblemRatingFrequency[item]
+          ? userOneProblemRatingFrequency[item]
+          : 0
+      }}
+    </td>
+    <td>
+      {{
+        userTwoProblemRatingFrequency[item]
+          ? userTwoProblemRatingFrequency[item]
+          : 0
+      }}
+    </td>
   </tr>
   } } }
 </table>

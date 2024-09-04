@@ -8,7 +8,7 @@ const calculateProblemFrequency = (submissions: Submission[]): { [difficulty: st
   const problemRatingFrequency: { [difficulty: string]: number } = {};
   const seenProblemIds: Map<ProblemIdentifier, boolean> = new Map();
   for(let submission of submissions) {
-    // if(seenProblemIds.has([subim]))
+
     let contestId = submission.problem.contestId;
     let index = submission.problem.index;
 
@@ -34,6 +34,19 @@ const calculateProblemFrequency = (submissions: Submission[]): { [difficulty: st
   return problemRatingFrequency;
 }
 
+const calculateRatedContests = (submissions: Submission[]): number => {
+  let seenContests = []
+  for(let item of submissions) {
+    if(item.author.participantType == "CONTESTANT") {
+      if(seenContests.includes(item.author.contestId)) {
+        continue;
+      }
+      seenContests.push(item.author.contestId);
+    }
+  }
+  return seenContests.length;
+}
+
 @Component({
   selector: 'app-compare',
   standalone: true,
@@ -55,6 +68,9 @@ export class CompareComponent implements OnInit {
 
   userOneProblemRatingFrequency = {}
   userTwoProblemRatingFrequency = {}
+
+  userOneRatedContests: number;
+  userTwoRatedContests: number;
 
   readyToCompare: boolean = false;
 
@@ -111,19 +127,13 @@ export class CompareComponent implements OnInit {
         console.log('User Two Submissions Not recieved from data service ' + err);
       }
     })
-    if(this.userOne && this.userTwo) {
-      this.userOneProblemRatingFrequency = calculateProblemFrequency(this.userOneSubmissions);
-      this.userTwoProblemRatingFrequency = calculateProblemFrequency(this.userTwoSubmissions);
-
-      console.log(this.userOneProblemRatingFrequency);
-
-      this.readyToCompare = true;
-    }
   }
   private checkToCompare() {
     if(this.userOneSubmissions.length >= 1 && this.userTwoSubmissions.length >=1) {
       this.userOneProblemRatingFrequency = calculateProblemFrequency(this.userOneSubmissions);
       this.userTwoProblemRatingFrequency = calculateProblemFrequency(this.userTwoSubmissions);
+      this.userOneRatedContests = calculateRatedContests(this.userOneSubmissions)
+      this.userTwoRatedContests = calculateRatedContests(this.userTwoSubmissions)
       this.readyToCompare = true;
     }
   }

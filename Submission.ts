@@ -1,3 +1,4 @@
+import { Author } from "./Author";
 import { Problem } from "./Problem";
 
 export interface Submission {
@@ -5,4 +6,5 @@ export interface Submission {
     contestId: number,
     problem: Problem,
     verdict: string,
+    author: Author
 }

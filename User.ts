@@ -1,7 +1,5 @@
 export interface User {
-    handle: string, 
-    lastname?: string,
-    firstname?: string,
+    handle?: string, 
     rating?: number, 
     maxRating?: number,
     rank?: string,

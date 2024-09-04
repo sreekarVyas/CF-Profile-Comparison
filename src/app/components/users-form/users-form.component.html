@@ -1,0 +1,19 @@
+<div class = "form-group">
+    <form (submit)="handleSubmit()">
+        <label>Enter CF Handle of User 1 : </label>
+        <input type="text" name = "handleOne" [(ngModel)]="handleOne">
+        @if(wrongHandleOne) {
+            <p>*enter correct handle</p>
+        }
+        <br>
+        <br>
+        <label>Enter CF Handle of User 2 : </label>
+        <input type="text" name = "handleOne" [(ngModel)]="handleTwo">
+        @if(wrongHandleTwo) {
+            <p>*enter correct handle</p>
+        }
+        <br>
+        <br>
+        <button type="submit">Compare</button>
+    </form>
+</div>
